@@ -10,11 +10,21 @@ import UIKit
 
 class ViewController: UIViewController {
 
+    @IBOutlet weak var miScroll: UIScrollView!
+    @IBOutlet weak var miImageView: UIImageView!
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
-    }
+        self.miScroll.minimumZoomScale = 1
+        self.miScroll.maximumZoomScale = 4
+        
+        miScroll.delegate = self
+    }//del override
 
 
-}
+}//del view controller
+extension ViewController : UIScrollViewDelegate{
+    func viewForZooming(in scrollView: UIScrollView) -> UIView? {
+        return miImageView
+    }// del la func viewForZooming
+}//del extension
 
